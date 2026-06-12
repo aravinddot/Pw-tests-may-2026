@@ -128,3 +128,41 @@ test('Handling Text and Attribute Extraction', async({page})=> {
 
 
 })
+
+
+test('Conditional handling - isChecked, is editable', async({page})=> {
+
+    await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-basic')
+
+    await page.getByTestId('remember-checkbox').check()
+
+   const isChecked = await page.getByTestId('remember-checkbox').isChecked()
+
+   console.log('Is Checkbox Checked: ', isChecked)
+
+
+   const isEditable = await page.getByTestId('name-input').isEditable()
+
+   console.log('Is Name Input Editable: ', isEditable)
+
+})
+
+
+test('conditional Handling - isVisible, isHidden, isDisabled', async({page})=> {
+
+    await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+    const isDisabled = await page.getByTestId('dynamic-group-select').isDisabled()
+
+    console.log('Is Dropdown Disabled: ', isDisabled)
+
+
+    const isHidden = await page.getByTestId('hidden-dropdown-select').isHidden()
+
+    console.log('Is Dropdown Hidden: ', isHidden)
+
+
+    const isVisible = await page.getByTestId('hidden-dropdown-select').isVisible()
+
+    console.log('Is Dropdown Visible: ', isVisible)
+})
