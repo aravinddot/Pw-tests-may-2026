@@ -144,3 +144,118 @@ test('Handling new tab direct click blocked', async () => {
 
      await pageTwo.waitForTimeout(3000)
 })
+
+
+
+
+test('Isolated context', async()=> {
+
+    test.setTimeout(120000)
+
+const browser = await chromium.launch()
+
+    
+    const context = await browser.newContext()
+    const page = await context.newPage()
+
+    await page.goto('https://testcms.reco-claims.ca/Login')
+
+    await page.locator('[name="Username"]').fill('info+programmanager@xlgclaims.com')
+
+    await page.locator('[name="Password"]').fill('Test1234!')
+
+    await page.locator('[type="submit"]').click()
+
+    await page.waitForTimeout(15000)
+
+    //-------------------------------------------------------------------------
+
+    const contextTwo = await browser.newContext()
+
+    const pageTwo = await contextTwo.newPage()
+
+     await pageTwo.goto('https://testcms.reco-claims.ca/Login')
+
+    await pageTwo.locator('[name="Username"]').fill('info+programmanager@xlgclaims.com')
+
+    await pageTwo.locator('[name="Password"]').fill('Test1234!')
+
+    await pageTwo.locator('[type="submit"]').click()
+
+    await pageTwo.waitForTimeout(15000)
+
+
+    const cookie = await context.cookies()
+
+    const cookieTwo = await contextTwo.cookies()
+
+    console.log("cookie===>"+ JSON.stringify(cookie))
+
+     console.log("cookieTwo===>"+ JSON.stringify(cookieTwo))
+
+
+
+
+
+
+
+
+})
+
+
+
+test('Handling Drag and drop', async({page})=> {
+
+
+    await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+
+    await page.getByTestId('drag-source').dragTo(page.getByTestId('drop-target'))
+
+    await expect(page.getByText('Drop completed successfully.')).toBeVisible()
+
+
+
+
+})
+
+
+test('Single and multiple files upload', async({page})=> {
+
+await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+await page.getByTestId('file-upload-input').setInputFiles('uploads/practice-report.pdf')
+
+
+await expect(page.getByText('practice-report.pdf uploaded successfully.')).toBeVisible()
+
+
+await page.getByTestId('multi-file-upload-input').setInputFiles(['uploads/practice-report.pdf', 'uploads/practice-notes.txt', 'uploads/practice-data.xml'])
+
+await expect(page.getByText('3 files uploaded')).toBeVisible()
+
+})
+
+
+
+
+test('Handling Downloads', async({page})=> {
+
+await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+//getByTestId('download-pdf-btn')
+
+const [download] = await Promise.all([
+    page.waitForEvent('download'),
+    page.getByTestId('download-pdf-btn').click()
+])
+
+const fileName = await download.suggestedFilename()
+
+await download.saveAs(`downloads/${fileName}`)
+
+
+
+
+
+})
