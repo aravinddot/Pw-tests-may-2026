@@ -255,6 +255,116 @@ const fileName = await download.suggestedFilename()
 await download.saveAs(`downloads/${fileName}`)
 
 
+})
+
+
+
+test('Handling Iframe', async({page})=> {
+
+await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+
+//practice-iframe
+
+const iframe = await page.frameLocator('#practice-iframe')
+
+await iframe.locator('#frame-input').fill('Playwright')
+
+await iframe.locator('#frame-save').click()
+
+await expect(iframe.getByText('Playwright saved')).toBeVisible()
+
+
+})
+
+
+test('Handling shadow dom', async({page})=> {
+
+
+await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+
+const shadow = await page.getByTestId('shadow-host')
+
+
+await shadow.locator('#shadow-input').fill('Automation Testing')
+
+await shadow.locator('#shadow-save').click()
+
+await expect(shadow.getByText('Automation Testing saved')).toBeVisible()
+
+
+
+})
+
+
+
+test('Handling Practice date', async({page})=> {
+
+await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+
+// await page.getByTestId('practice-date-picker').type('01-06-2026')
+
+
+// await expect(page.getByText('Practice Date Selected: 2026-06-01')).toBeVisible()
+
+
+await page.getByTestId('practice-date-picker').fill('2026-06-01')
+
+
+await expect(page.getByText('Practice Date Selected: 2026-06-01')).toBeVisible()
+
+
+
+})
+
+
+test('Handling interview date', async({page})=> {
+
+
+await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+const interviewDate = await page.getByTestId('interview-date-picker')
+
+await interviewDate.evaluate((dom, val)=> {
+
+const html = dom as HTMLInputElement
+html.value = val as string
+
+html.dispatchEvent(new Event('input'))
+html.dispatchEvent(new Event('change'))
+
+}, '2026-06-01')
+
+await expect(page.getByText('Interview Date Selected: 2026-06-01')).toBeVisible()
+
+})
+
+
+
+test('Advanced wait commands', async({page})=> {
+
+await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+
+// await page.getByTestId('wait-navigation-link').click()
+
+// await page.waitForURL('https://playwright-mastery-academy-app.vercel.app/practice/popup?source=waitfornavigation')
+
+// await expect(page.getByText('Popup Opened Successfully')).toBeVisible()
+
+
+await page.getByTestId('wait-response-btn').click()
+
+await page.waitForResponse('https://playwright-mastery-academy-app.vercel.app/api/practice/waits-status')
+
+await expect(page.getByText('Trigger API Response Completed')).toBeVisible()
+
+
+
+
+
 
 
 
