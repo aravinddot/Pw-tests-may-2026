@@ -355,17 +355,193 @@ await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sand
 // await expect(page.getByText('Popup Opened Successfully')).toBeVisible()
 
 
-await page.getByTestId('wait-response-btn').click()
+// await page.getByTestId('wait-response-btn').click()
 
-await page.waitForResponse('https://playwright-mastery-academy-app.vercel.app/api/practice/waits-status')
+// await page.waitForResponse('https://playwright-mastery-academy-app.vercel.app/api/practice/waits-status')
 
-await expect(page.getByText('Trigger API Response Completed')).toBeVisible()
-
-
+// await expect(page.getByText('Trigger API Response Completed')).toBeVisible()
 
 
+
+// await page.getByTestId('wait-response-btn').click()
+
+// await page.getByText('Trigger API Response Completed').waitFor({state: 'visible'})
+
+// await expect(page.getByText('Trigger API Response Completed')).toBeVisible()
+
+
+// visible - element should be visible in UI, exists in DOM
+
+// hidden - Locator hidden should not be visible in UI, exists in DOM
+
+// attached - DOM exists
+
+// detached - locator should not exists in DOM and should not be visible
+
+
+
+
+
+// await page.getByTestId('wait-response-btn').click()
+
+// await page.waitForSelector("//*[contains(text(), 'Trigger API Response Completed')]")
+
+// await expect(page.getByText('Trigger API Response Completed')).toBeVisible()
+
+
+// load - DOM loaded, images loaded - medium
+
+// await page.getByTestId('wait-loadstate-practice-load-btn').click()
+
+// await page.waitForLoadState('load')
+
+// await expect(page.getByText('Test load State: Completed')).toBeVisible()
+
+
+// domcontentloaded - DOM loaded - fast
+// await page.getByTestId('wait-loadstate-practice-dom-btn').click()
+
+// await page.waitForLoadState('domcontentloaded')
+
+// await expect(page.getByText('Test DOMContentLoaded State: Completed')).toBeVisible()
+
+
+//networkidle - DOM loaded, images loaded, API calls finished - slow
+
+// await page.getByTestId('wait-loadstate-practice-networkidle-btn').click()
+
+// await page.waitForLoadState('networkidle')
+
+// await expect(page.getByText('Test Network Idle State: Completed')).toBeVisible()
+
+
+})
+
+
+
+test('Handling Mouse actions', async({page})=> {
+
+
+await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+// await page.getByText('Mouse Actions').scrollIntoViewIfNeeded()
+
+// await expect(page.getByText('Mouse Actions')).toBeVisible()
+
+
+// await page.getByTestId('mouse-downup-target').hover()
+
+// await page.mouse.down()
+
+// await expect(page.getByText('Mouse down detected')).toBeVisible()
+
+// await page.mouse.up()
+
+// await expect(page.getByText('Mouse down + up detected')).toBeVisible()
+
+
+// await page.getByTestId('mouse-rightclick-target').click({button: 'right'})
+
+// await expect(page.getByText('Right click detected on target.')).toBeVisible()
+
+
+// await page.getByTestId('mouse-wheel-target').hover()
+
+// await page.mouse.wheel(0, 300)
+
+// await expect(page.getByText('Mouse wheel scrolled down.')).toBeVisible()
 
 
 
 
 })
+
+
+
+test('Force actions', async({page})=> {
+
+
+    // actions - click, dblclick, hover, check, uncheck, dragto
+
+   await page.getByText('Mouse wheel scrolled down.').click({force: true})
+
+   // Attached to DOM
+   // visble
+   // stable
+   // enable
+   // not covered by another element
+
+   // clicking wrong element unintentionally
+
+
+
+
+})
+
+
+
+
+test('element and page screenshot', async({page})=> {
+
+await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+    await page.getByTestId('wait-response-btn').screenshot({path: 'screenshots/element.png'})
+
+
+    await page.screenshot({path: 'screenshots/page.png', fullPage: true})
+
+
+})
+
+
+
+
+
+test('retrying and non retrying assertions', async({page})=> {
+
+
+    // retry - 5 secs
+
+    // visiblity & state
+
+await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
+
+await expect(page.getByTestId('dynamic-group-select')).toBeVisible()
+
+await expect(page.getByTestId('dynamic-group-select')).toBeEnabled()
+
+
+await expect(page.getByTestId('dynamic-option-select')).toBeDisabled()
+
+// tobeeditable
+// tobehidden
+// tobechecked
+
+
+// text
+
+await expect(page.getByTestId('dynamic-dropdown-status')).toContainText('Dynamic Dropdown')
+
+// toHaveText()
+
+// toHaveValue()
+
+// toHaveAttribute('attribute value')
+// toHaveClass('active')
+
+// toHaveCount(20)
+
+
+// page
+
+
+//expect(page).toHaveTitle('playwright mastery academy')
+
+// expect(page).toHaveUrl('https//:example.com')
+
+
+})
+
+
+
+
