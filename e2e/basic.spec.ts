@@ -1,15 +1,19 @@
 import {test, expect} from '@playwright/test'
 
 
+// only, skip, fixme, fail, slow
 
+test.only('Handling Click, Double Click, Hover, Tooltip, Static Dropdown', async({page})=> {
 
-test('Handling Click, Double Click, Hover, Tooltip, Static Dropdown', async({page})=> {
+    // test.slow()
 
-    await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-basic')
+    test.setTimeout(240000)
 
-    await page.getByTestId('single-click-btn').click()
+    await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-basic', {timeout: 120000})
 
-    await expect(page.getByText('Single click completed.')).toBeVisible()
+    await page.getByTestId('single-click-btn').click({timeout: 120000})
+
+    await expect(page.getByText('Single click completed.')).toBeVisible({timeout: 120000})
 
 
     await page.getByTestId('double-click-btn').dblclick()

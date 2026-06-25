@@ -586,7 +586,7 @@ test('retrying and non retrying assertions', async ({ page }) => {
 
 
 
-test('Hard vs soft asserions', async ({ page }) => {
+test.only('Hard vs soft asserions', async ({ page }) => {
 
     await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
 
