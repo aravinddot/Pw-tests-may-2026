@@ -2,7 +2,7 @@ import { test, expect, chromium } from '@playwright/test'
 
 
 
-test('Handling Dynamic Dropdown', async ({ page }) => {
+test('Handling Dynamic Dropdown @smoke', async ({ page }) => {
 
     await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
 
@@ -15,7 +15,7 @@ test('Handling Dynamic Dropdown', async ({ page }) => {
 })
 
 
-test('Handling Hidden dropdown', async ({ page }) => {
+test('Handling Hidden dropdown @regression @endtoend', async ({ page }) => {
 
     await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
 
@@ -33,7 +33,7 @@ test('Handling Hidden dropdown', async ({ page }) => {
 
 
 
-test('handling Bootstrap Dropdown', async ({ page }) => {
+test('handling Bootstrap Dropdown @regression', async ({ page }) => {
 
 
     await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
@@ -89,7 +89,7 @@ test('handling alert popup', async ({ page }) => {
 
 
 
-test('Handling New tab', async () => {
+test('Handling New tab @regression @endtoend', async () => {
 
 
     const browser = await chromium.launch()
@@ -586,7 +586,7 @@ test('retrying and non retrying assertions', async ({ page }) => {
 
 
 
-test.only('Hard vs soft asserions', async ({ page }) => {
+test('Hard vs soft asserions', async ({ page }) => {
 
     await page.goto('https://playwright-mastery-academy-app.vercel.app/practice/sandbox-advanced')
 

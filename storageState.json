@@ -1,0 +1,15 @@
+{
+  "cookies": [
+    {
+      "name": ".AspNetCore.Identity.Application",
+      "value": "CfDJ8Cl2aWbWfvdNsOWt6nEKOmQ2OLKtAjI5Itai0BfB7KdJKNfwIm419FWreREJzfRXF9tKKQ5zfCinrV_Pab1QZq4tNc7cvHRffj2PMfTN8EHYY92uNzUAU1MkwVkjsrmve8GItTuo1xu9YwGLBZ1HqBHoC90vI_SFqiLnWoEi5e87sihCbKbhX2JA0Kv6Drmcd6N8lgo59_SPN6rM1URF9oGErYEd_1fjYOdG7Bq26Ot3e0o8p7-9m366bVgAH3qMAuuue_w7txtcA3cblNpLYhf38S90LQFkRSt9JIteoyQSVeDxwwmYNMm2zEkweOvCIlF42uDYag5cEw8Lvu29eGT2cSblun0IIotu2oW6L9WUQWyTS3TYV347d39zTQo58Cx-3pLiraJ8y7jM95ZBlsL89YlgadQQP1PUsSYLefGlBLsb972LhdCPmvOLmNM5kHQ0fA7AkXu_P1Y3MuZ2rLWHQF6JD1dtafh2LetVfdTte2Uq8wPVHe4eMCc9H4IsCFWt0o7-xMmpFqV8_apzpowJEA8jM7m7eb-2yD3rVmP8ZGZiUfVGhurZehrfLLn7gsGA3kFikVjuKKKyc4199SLXZ2mQ81oP6vwcCGLp_aLWUQesv4CWPMUCi7yoUsg4jxM4ncSVJYSBWBXyc-hHtU8OIlz528iE1sfEaq4ssJsUT-fl07AUlzhXAUQOLpm6XsufD1OUU2Vnz5_eOdgfnV8AlHx18QU_xTPMsnAS3RckmZMTzR1eYWmBsiT7FvKMnMTbWrwgkUcGGxdfvSdLLadQDQIoNSEpsmvpErtJQa20iRByUUCt3edSPa20ELIyaO71kFTBIY-7bFCHUD0tt0tFAlJvs5yL4LMBPMmisiS39uQh2a-8Mp6Cgb1pN5O0200prQeqgv5xk6aTAwQmN7M",
+      "domain": "testcms.reco-claims.ca",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

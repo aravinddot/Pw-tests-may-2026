@@ -3,7 +3,7 @@ import {test, expect} from '@playwright/test'
 
 // only, skip, fixme, fail, slow
 
-test.only('Handling Click, Double Click, Hover, Tooltip, Static Dropdown', async({page})=> {
+test('Handling Click, Double Click, Hover, Tooltip, Static Dropdown @smoke', async({page})=> {
 
     // test.slow()
 
